@@ -20,7 +20,7 @@ def bot(history):
             prompt = history[-1][0]
             image = pipeline(prompt).images[0]
             image.save("generated_image.png")
-            response = ("generated_img.png",)
+            response = ("generated_image.png",)
             history[-1][1] = response
             yield history
         except Exception as e:
@@ -57,6 +57,6 @@ with gr.Blocks() as demo:
 
 demo.queue()
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(server_name="0.0.0.0", share=False)
 
 	
